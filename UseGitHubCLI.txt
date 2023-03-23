@@ -1,0 +1,19 @@
+(on preconfigured machine with SSH)
+
+
+
+[PULL -> PUSH]
+
+cd into local clone of repo
+
+git remote set-url origin git@github.com:username/your-repository.git
+
+git add <file, *>
+
+git commit
+
+git push
+
+
+
+
