@@ -10,6 +10,24 @@ function saveTodos() {
     localStorage.setItem(TODOS_KEY, JSON.stringify(todos));
 }
 
+/*
+function paintTodo(newTodoObj) {
+    const listElement = document.createElement("li");
+    listElement.id = newTodoObj.id;
+    const input = document.createElement("input");
+    input.type = "checkbox";
+    //input.addEventListener("click", blurTodo); //work on this Function
+    const span = document.createElement("span");
+    span.innerText = newTodoObj.text;
+    const btn = document.createElement("button");
+    btn.innerText = "🗑️";
+    btn.addEventListener("click", deleteTodo);
+    listElement.appendChild(span);
+    listElement.appendChild(btn);
+    todoList.appendChild(listElement);
+}
+*/
+
 function paintTodo(newTodoObj) {
     const listElement = document.createElement("li");
     listElement.id = newTodoObj.id;
@@ -22,7 +40,7 @@ function paintTodo(newTodoObj) {
 
     const input = document.createElement("input");
     input.type = "checkbox";
-    input.addEventListener("click", strikethru); 
+    input.addEventListener("click", strikethru); //work on this function
 
     const span = document.createElement("span");
     span.innerText = newTodoObj.text;
@@ -46,6 +64,7 @@ function strikethru(event) {
 }
 
 function deleteTodo(event) {
+    //const li = event.target.parentElement;
     const li = event.target.parentElement.parentElement;
     todos = todos.filter((foo) => foo.id !== parseInt(li.id));
     li.remove();
@@ -71,5 +90,6 @@ const savedTodos = localStorage.getItem(TODOS_KEY);
 if(savedTodos !== null) {
     const parsedTodos = JSON.parse(savedTodos);
     todos = parsedTodos;
+    //parsedTodos.forEach((item)=> paintTodo(item));
     parsedTodos.forEach((item)=> paintTodo(item));
 }

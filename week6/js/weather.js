@@ -1,7 +1,5 @@
-/*
 require('dotenv').config();
 console.log(process.env.API_KEY);
-*/
 
 function isSun(currentTime, sunriseTime, sunsetTime) { //추후 기능에 사용, 별도로 뺌
     if(currentTime<=sunriseTime) {
@@ -58,8 +56,7 @@ function onGeoSuccess(pos) {
     console.log(pos);
     const lat = pos.coords.latitude;
     const long = pos.coords.longitude;
-    //const API_KEY = process.env.API_KEY; 
-    API_KEY = "***REMOVED***";
+    const API_KEY = process.env.API_KEY; 
     const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${API_KEY}&units=metric`;
     
     fetch(url).then(response => response.json().then(data => handleLocale(data)));
